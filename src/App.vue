@@ -1,13 +1,20 @@
 <template>
   <div id="app">
-    <div id="slideActiveMenu" class="menu">
+    <div class="menu" :class="classMenuVisible">
       <div class="header-menu">
-        <i v-show="!isMobileView" class="fas fa-arrow-left menu-icon" @click="closeMenu"></i>
-        <i v-show="!isMobileView" v-if="!menuVisible" class="fas fa-bars open-icon" @click="openMenu"></i>
-        <i v-show="isMobileView" v-if="!menuVisible" class="fas fa-bars menu-icon" @click="changeMenuVisible"></i>
-        <i v-show="isMobileView" v-if="menuVisible" class="fas fa-times menu-icon" @click="changeMenuVisible"></i>
+        <i v-show="!isMobileView"
+           class="fas"
+           :class="menuVisible ? ['fa-arrow-left', 'menu-icon'] : ['fa-bars', 'open-icon']"
+           @click="changeMenuVisible"
+        ></i>
+        <i v-show="isMobileView"
+           class="fas menu-icon"
+           :class="menuVisible ? 'fa-times' : 'fa-bars'"
+           @click="changeMenuVisible"
+        ></i>
         <span class="menu-title">тесты</span>
       </div>
+
       <div v-show="menuVisible">
         <ul :class="{'menu-list': !isMobileView, 'mobile-menu-list': isMobileView}">
           <li v-for="(test, index) of tests" class="menu-item" :key="`test-${index}`">
@@ -16,8 +23,10 @@
         </ul>
       </div>
     </div>
-    <div id="slideHiddenMenu" class="menu-hidden">
-      <i class="fas fa-bars open-icon" @click="openMenu"></i>
+    <div class="menu-hidden">
+      <i class="fas fa-bars open-icon" @click="changeMenuVisible"></i>
+
+<!--      <i class="fas fa-bars open-icon" @click="openMenu"></i>-->
     </div>
     <div v-if="!isMobileView" :class="{'content-menu-active': menuVisible, 'content-menu-hidden': !menuVisible}">
       <router-view/>
@@ -47,24 +56,42 @@ export default {
       width: 0,
     }
   },
+
   created() {
     this.handleView();
     window.addEventListener('resize', this.handleView);
   },
+
+  computed: {
+    classMenuVisible() {
+      return {
+        'menu-hidden-slide-in': this.menuVisible && !this.isMobileView,
+        'menu-slide-out': !this.menuVisible && !this.isMobileView
+      }
+    }
+  },
+
+  beforeDestroy() {
+    window.removeEventListener('resize', this.handleView);
+  },
+
   methods: {
     changeMenuVisible() {
       this.menuVisible = !this.menuVisible;
     },
-    closeMenu() {
-      slideActiveMenu.classList.toggle("menu-slide-out");
-      slideHiddenMenu.classList.toggle("menu-hidden-slide-in");
-      this.changeMenuVisible()
-    },
-    openMenu() {
-      slideActiveMenu.classList.toggle("menu-slide-out");
-      slideHiddenMenu.classList.toggle("menu-hidden-slide-in");
-      this.changeMenuVisible()
-    },
+
+    // closeMenu() {
+    //   this.$refs.slideActiveMenu.classList.toggle("menu-slide-out");
+    //   this.$refs.slideHiddenMenu.classList.toggle("menu-hidden-slide-in");
+    //   this.changeMenuVisible()
+    // },
+    //
+    // openMenu() {
+    //   this.$refs.slideActiveMenu.classList.toggle("menu-slide-out");
+    //   this.$refs.slideHiddenMenu.classList.toggle("menu-hidden-slide-in");
+    //   this.changeMenuVisible()
+    // },
+
     goToTest(test) {
       if(test.id) {
         this.$router.push({name: 'testDescription',
@@ -76,6 +103,7 @@ export default {
         }
       }
     },
+
     handleView() {
       if(window.innerWidth <= 550) {
         this.isMobileView = true;
@@ -88,7 +116,7 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 $button-hover-color: #fc0404;
 $line-color: #ced6e0;
 $menu-color: #f1f2f6;
@@ -142,7 +170,7 @@ $icons-color: #a4b0be;
       position: absolute;
       color: $icons-color;
       color: var(--icons-color, gray);
-      left: 10.5rem;
+      left:10.5rem;
       top: 1.1rem;
       z-index: 20;
     }
@@ -160,7 +188,7 @@ $icons-color: #a4b0be;
     color: var(--icons-color, gray);
     left: 1rem;
     top: 1.1rem;
-    z-index: 10;
+    z-index: 20;
   }
 
   .menu-title {

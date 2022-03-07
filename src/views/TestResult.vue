@@ -19,7 +19,7 @@
             :id="question.id"
             :question="question.value"
             :correctAnswer="question.correctAnswer"
-            :userAnswer="question.userAnswer">
+            :userAnswer="question.userAnswer ? question.userAnswer : 'Не ответили'">
         </result>
       </div>
     </section>
@@ -66,6 +66,7 @@ export default {
     selectedTest(){
       sessionStorage.setItem("test", JSON.stringify(this.selectedTest))
     },
+
     timeSpent() {
       sessionStorage.setItem("time-spent", JSON.stringify(this.timeSpent))
     }
@@ -80,6 +81,7 @@ export default {
         this.selectedTest = JSON.parse(storageTest)
       }
     },
+
     getTimeSpent () {
       let storageSpentTime = sessionStorage.getItem("time-spent")
       if(this.time) {
@@ -89,6 +91,7 @@ export default {
         this.timeSpent = JSON.parse(storageSpentTime)
       }
     },
+
     countCorrectAnswer() {
       let i = 0;
       for (i; i < this.selectedTest.questions.length; i++) {
@@ -97,16 +100,19 @@ export default {
         }
       }
     },
+
     cancelUserAnswer() {
       let i = 0;
       for (i; i < this.selectedTest.questions.length; i++) {
-        this.selectedTest.questions[i].userAnswer = 'Не ответили'
+        this.selectedTest.questions[i].userAnswer = null
       }
     },
+
     openTestAgain(selectedTest) {
       this.cancelUserAnswer()
       this.$router.push({name:'testQuestions', params:{test: selectedTest}})
     },
+
     toggleModal() {
       this.isShowModal = !this.isShowModal;
     }

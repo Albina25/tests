@@ -36,7 +36,7 @@ export default {
     cancelUserAnswer() {
       let i = 0;
       for (i; i < this.selectedTest.questions.length; i++) {
-        this.selectedTest.questions[i].userAnswer = 'Не ответили'
+        this.selectedTest.questions[i].userAnswer = null
       }
     },
   }

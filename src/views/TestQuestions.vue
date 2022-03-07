@@ -42,6 +42,7 @@ export default {
       textButton: 'Завершить',
       isShowModal: false,
       selectedTest: {},
+      startTime: 0,
       time: {
         hours: 0,
         minutes: 0,
@@ -50,26 +51,29 @@ export default {
     }
   },
   mounted() {
-    this.getTest()
-    this.countUpTimer()
+    this.getTest();
+    this.startTime = new Date().getTime();
+    this.displayTimer();
   },
 
   computed: {
     totalQuestions() {
       return this.selectedTest?.questions?.length
     },
+
     numberAnswers() {
       const length = this.selectedTest?.questions?.length
       if(length !== 0) {
         let count = 0
         for (let i = 0; i < length; i++) {
-          if (this.selectedTest.questions[i].userAnswer !== 'Не ответили') {
+          if (this.selectedTest.questions[i].userAnswer !== null) {
             count++
           }
         }
         return count
       }
     },
+
     timeOutput() {
       return {
         hours: ("0" + this.time.hours).slice(-2),
@@ -78,11 +82,13 @@ export default {
       }
     }
   },
+
   watch: {
     selectedTest(){
       sessionStorage.setItem("selected-test", JSON.stringify(this.selectedTest))
     },
   },
+
   methods: {
     getTest() {
       let storageTest = sessionStorage.getItem("selected-test")
@@ -93,30 +99,37 @@ export default {
         this.selectedTest = JSON.parse(storageTest)
       }
     },
+
     testFinished(selectedTest) {
       this.$router.push({name: `testResult`, params: {test: selectedTest, time: this.timeOutput}})
     },
+
     toggleModal() {
       this.isShowModal = !this.isShowModal;
     },
+
     countUpTimer() {
-      setTimeout(() => {
-        this.time.seconds += 1
-        this.countUpTimer()
-      }, 1000)
-      if (this.time.seconds > 59) {
-        this.time.minutes += 1
-        this.time.seconds = 0
-      }
-      if (this.time.minutes > 59) {
-        this.time.hours += 1
-        this.time.minutes = 0
-      }
+        let secondsLeft = Math.floor((Date.now() - this.startTime) / 1000);
+        this.time.seconds = secondsLeft;
+
+        if (this.time.seconds > 59) {
+          this.time.minutes += 1;
+          this.time.seconds = 0;
+        }
+        if (this.time.minutes > 59) {
+          this.time.hours += 1;
+          this.time.minutes = 0;
+        }
     },
+
+    displayTimer() {
+      setInterval(this.countUpTimer, 1000);
+    },
+
     cancelUserAnswer() {
       let i = 0;
       for (i; i < this.test.questions.length; i++) {
-        this.test.questions[i].userAnswer = 'Не ответили'
+        this.test.questions[i].userAnswer = null
       }
     },
   }
@@ -148,7 +161,7 @@ $border-color: #e30303;
       padding: 1rem 0;
     }
   }
-  
+
   .answers {
     background-color: $menu-color;
     background-color: var(--menu-color);

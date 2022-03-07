@@ -8,7 +8,7 @@ export const tests = [
         id: 1,
         value: 'Вопрос',
         correctAnswer: 'Вариант А',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -22,7 +22,7 @@ export const tests = [
         id: 2,
         value: 'Вопрос',
         correctAnswer: 'Вариант Б',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -36,7 +36,7 @@ export const tests = [
         id: 3,
         value: 'Вопрос',
         correctAnswer: 'Вариант В',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -50,7 +50,7 @@ export const tests = [
         id: 4,
         value: 'Вопрос',
         correctAnswer: 'Вариант А',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -64,7 +64,7 @@ export const tests = [
         id: 5,
         value: 'Вопрос',
         correctAnswer: 'Lorem ipsum sit amet, consectetur adipiscing elit.',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Lorem ipsum sit amet, consectetur adipiscing elit.'},
           {id: 2, value: 'Lorem ipsum dolor sit amet, consectetur adipsicing elit. Aliquam sollicitudin odio sit amet.'},
@@ -82,7 +82,7 @@ export const tests = [
         id: 1,
         value: 'Вопрос',
         correctAnswer: 'Вариант А',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -96,7 +96,7 @@ export const tests = [
         id: 2,
         value: 'Вопрос',
         correctAnswer: 'Вариант Б',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -110,7 +110,7 @@ export const tests = [
         id: 3,
         value: 'Вопрос',
         correctAnswer: 'Вариант В',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -124,7 +124,7 @@ export const tests = [
         id: 4,
         value: 'Вопрос',
         correctAnswer: 'Вариант А',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -138,7 +138,7 @@ export const tests = [
         id: 5,
         value: 'Вопрос',
         correctAnswer: 'Lorem ipsum sit amet, consectetur adipiscing elit.',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Lorem ipsum sit amet, consectetur adipiscing elit.'},
           {id: 2, value: 'Lorem ipsum dolor sit amet, consectetur adipsicing elit. Aliquam sollicitudin odio sit amet.'},
@@ -156,7 +156,7 @@ export const tests = [
         id: 1,
         value: 'Вопрос',
         correctAnswer: 'Вариант А',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -170,7 +170,7 @@ export const tests = [
         id: 2,
         value: 'Вопрос',
         correctAnswer: 'Вариант Б',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -184,7 +184,7 @@ export const tests = [
         id: 3,
         value: 'Вопрос',
         correctAnswer: 'Вариант В',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -198,7 +198,7 @@ export const tests = [
         id: 4,
         value: 'Вопрос',
         correctAnswer: 'Вариант А',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -212,7 +212,7 @@ export const tests = [
         id: 5,
         value: 'Вопрос',
         correctAnswer: 'Lorem ipsum sit amet, consectetur adipiscing elit.',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Lorem ipsum sit amet, consectetur adipiscing elit.'},
           {id: 2, value: 'Lorem ipsum dolor sit amet, consectetur adipsicing elit. Aliquam sollicitudin odio sit amet.'},
@@ -230,7 +230,7 @@ export const tests = [
         id: 1,
         value: 'Вопрос',
         correctAnswer: 'Вариант А',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -244,7 +244,7 @@ export const tests = [
         id: 2,
         value: 'Вопрос',
         correctAnswer: 'Вариант Б',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -258,7 +258,7 @@ export const tests = [
         id: 3,
         value: 'Вопрос',
         correctAnswer: 'Вариант В',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -272,7 +272,7 @@ export const tests = [
         id: 4,
         value: 'Вопрос',
         correctAnswer: 'Вариант А',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Вариант А'},
           {id: 2, value: 'Вариант Б'},
@@ -286,7 +286,7 @@ export const tests = [
         id: 5,
         value: 'Вопрос',
         correctAnswer: 'Lorem ipsum sit amet, consectetur adipiscing elit.',
-        userAnswer: 'Не ответили',
+        userAnswer: null,
         answers: [
           {id: 1, value: 'Lorem ipsum sit amet, consectetur adipiscing elit.'},
           {id: 2, value: 'Lorem ipsum dolor sit amet, consectetur adipsicing elit. Aliquam sollicitudin odio sit amet.'},
