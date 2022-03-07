@@ -112,14 +112,9 @@ export default {
         let secondsLeft = Math.floor((Date.now() - this.startTime) / 1000);
         this.time.seconds = secondsLeft;
 
-        if (this.time.seconds > 59) {
-          this.time.minutes += 1;
-          this.time.seconds = 0;
-        }
-        if (this.time.minutes > 59) {
-          this.time.hours += 1;
-          this.time.minutes = 0;
-        }
+      this.time.hours = Math.floor(secondsLeft / 3600);
+      this.time.minutes = Math.floor((secondsLeft % 3600) / 60);
+      this.time.seconds = secondsLeft % 60;
     },
 
     displayTimer() {
